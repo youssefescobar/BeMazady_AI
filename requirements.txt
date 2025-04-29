@@ -1,3 +1,5 @@
-transformers==4.38.2
+fastapi
+uvicorn
+transformers
 torch
 Pillow

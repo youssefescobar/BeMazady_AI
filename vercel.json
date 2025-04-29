@@ -1,14 +1,11 @@
 {
-    "functions": {
-      "app.py": {
-        "runtime": "vercel-python@0.5.0"
-      }
-    },
+    "version": 2,
     "builds": [
       { "src": "app.py", "use": "@vercel/python" }
     ],
     "routes": [
-      { "src": "/api/validate", "dest": "app.py" }
-    ]
+      { "src": "/(.*)", "dest": "app.py" }
+    ],
+    "postInstallCommand": "python -c \"from transformers import AutoImageProcessor, AutoModelForImageClassification, BlipProcessor, BlipForConditionalGeneration, AutoTokenizer, AutoModel; AutoImageProcessor.from_pretrained('falconsai/nsfw_image_detection'); AutoModelForImageClassification.from_pretrained('falconsai/nsfw_image_detection'); BlipProcessor.from_pretrained('Salesforce/blip-image-captioning-base'); BlipForConditionalGeneration.from_pretrained('Salesforce/blip-image-captioning-base'); AutoTokenizer.from_pretrained('sentence-transformers/all-mpnet-base-v2'); AutoModel.from_pretrained('sentence-transformers/all-mpnet-base-v2')\""
   }
   
